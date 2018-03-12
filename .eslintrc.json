@@ -1,0 +1,54 @@
+{
+  "plugins": ["react"],
+  "extends": ["react-app", "plugin:react/recommended"],
+  "rules": {
+    "no-var": 2,
+    "no-console": 1,
+    "no-debugger": 2,
+    "no-unused-vars": 2,
+    "no-unreachable": 2,
+    "no-multi-spaces": 2,
+    "no-unexpected-multiline": 2,
+    "no-multiple-empty-lines": [
+      2,
+      {
+        "max": 1,
+        "maxEOF": 1
+      }
+    ],
+    "guard-for-in": 2,
+    "valid-jsdoc": [
+      2,
+      {
+        "requireReturn": false,
+        "requireParamDescription": false,
+        "requireReturnDescription": false
+      }
+    ],
+    "no-undef": 1,
+    "key-spacing": 2,
+    "semi-spacing": 2,
+    "block-spacing": 2,
+    "spaced-comment": 2,
+    "callback-return": 2,
+    "space-infix-ops": 2,
+    "keyword-spacing": 2,
+    "newline-after-var": 2,
+    "space-before-blocks": 2,
+    "handle-callback-err": 1,
+    "newline-before-return": 2,
+    "semi": [2, "always"],
+    "eqeqeq": [2, "always"],
+    "eol-last": [2, "always"],
+    "max-statements": [2, 40],
+    "comma-dangle": [2, "never"],
+    "indent": [2, 2, { "SwitchCase": 1 }],
+    "object-curly-spacing": [2, "always"],
+    "comma-spacing": [2, { "before": false, "after": true }],
+    "quotes": [2, "single", { "allowTemplateLiterals": true }],
+    "react/prop-types": 1,
+    "react/no-children-prop": 0,
+    "react/no-string-refs": 1,
+    "react/display-name": 0
+  }
+}
