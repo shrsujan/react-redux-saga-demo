@@ -1,6 +1,6 @@
 import React from 'react';
 import { history } from '../store';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { ConnectedRouter } from 'react-router-redux';
 
 import * as routes from '../constants/routes';
@@ -13,7 +13,8 @@ const Router = () => (
   <ConnectedRouter history={history}>
     <Switch>
       <Route exact path={routes.LOGIN} component={Login} />
-      <PrivateRoute path={routes.APP_ROOT} component={AppRoot} />
+      <PrivateRoute exact path={routes.APP_ROOT} component={AppRoot} />
+      <Route component={() => <Redirect to="/login" />} />
     </Switch>
   </ConnectedRouter>
 );

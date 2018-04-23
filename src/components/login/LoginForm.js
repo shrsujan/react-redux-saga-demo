@@ -42,40 +42,42 @@ class LoginForm extends Component {
         resolve();
       }
     });
-  }
+  };
 
   onSubmit = event => {
     event.preventDefault();
-    this.validate().then(() => {
-      this.setState({
-        errors: {},
-        isSubmitting: true
-      });
-      new Promise((resolve, reject) => {
-        this.props.loginWatcher({ ...this.state }, resolve, reject);
-      }).catch(e => {
+    this.validate()
+      .then(() => {
         this.setState({
-          isSubmitting: false
+          errors: {},
+          isSubmitting: true
         });
+        new Promise((resolve, reject) => {
+          this.props.loginWatcher({ ...this.state }, resolve, reject);
+        }).catch(e => {
+          this.setState({
+            isSubmitting: false
+          });
+        });
+      })
+      .catch(errors => {
+        this.setState({ errors });
       });
-    }).catch(errors => {
-      this.setState({ errors });
-    });
-  }
+  };
 
   handleEmailChange = event => {
     event.preventDefault();
     this.setState({
       email: event.target.value
     });
-  }
+  };
 
   handlePasswordChange = event => {
     event.preventDefault();
     this.setState({
       password: event.target.value
     });
-  }
+  };
 
   render() {
     let { email, password, errors } = this.state;
@@ -87,11 +89,13 @@ class LoginForm extends Component {
         <input type="password" placeholder="Password" value={password} onChange={this.handlePasswordChange} />
         <span className="error">{errors.password}</span>
         <button type="submit" className="success">
-          {
-            this.state.isSubmitting ?
-              <div className="loader"></div> :
-              `Login`
-          }
+          {this.state.isSubmitting ? (
+            <div className="loader">
+              <span className="loader-inner" />
+            </div>
+          ) : (
+            `Login`
+          )}
         </button>
       </form>
     );

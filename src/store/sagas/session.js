@@ -49,7 +49,7 @@ export function* loginActionEffect(loginAction) {
       localStorage.setItem(key, data[key]);
     });
     alert.success('Welcome to the App!');
-    yield put(push('home'));
+    yield put(push('/'));
     if (resolve) resolve();
   } catch (e) {
     alert.error(e.message || 'Authentication Error');
@@ -114,7 +114,6 @@ export function* fetchSelfActionWatcher() {
 export function* logoutActionEffect() {
   try {
     localStorage.clear();
-    alert.clearAll();
     yield put(clearSession());
     yield put(push('/login'));
   } catch (e) {
